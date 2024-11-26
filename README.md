@@ -30,4 +30,3 @@ Repository for Fabric Attach related information, documents, and tools
 | 24 | Placeholder 2 | pending |
 | 63 |	FA Client Unknown ||
 
-[Fabric Attach Functional Specification Client Variants with Assignment TLV v1.4](Fabric_Attach_Functional_Specification_Client_Variants_with_Assignment_TLV_v1.4.pdf)
