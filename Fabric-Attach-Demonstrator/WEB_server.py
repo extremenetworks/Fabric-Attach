@@ -388,7 +388,9 @@ def vmConfigValidator(inConfig):
     try:
         configValidator.validate(inConfig)
     except jsonschema.exceptions.ValidationError as error:
-        return "Schema Error: %s" % str(error)
+        # Log detailed schema validation error internally, but do not expose it to the client
+        log.error("VM configuration schema validation failed: %s", error)
+        return "Schema Error: invalid VM configuration"
     
     if inConfig['action'] == 'add':
         if not vmId in config['VM']:
