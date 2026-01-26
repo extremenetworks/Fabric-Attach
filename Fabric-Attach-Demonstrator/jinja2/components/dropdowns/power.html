@@ -1,0 +1,37 @@
+<!-- dropdown button -->
+<button class="flex items-center py-2 px-4 bg-red-700 text-white text-sm font-bold rounded"
+    data-dropdown-toggle="power-dropdown">
+    Power
+
+    <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+    </svg>
+</button>
+
+<!-- dropdown menu -->
+<div id="power-dropdown" class="z-10 hidden bg-white border divide-y divide-gray-100 rounded-lg shadow w-44">
+    <ul class="py-2 text-sm text-gray-700">
+        <li>
+            <button class="flex items-center w-full space-x-3 py-2 px-4 text-sm hover:bg-red-100" data-name="shutdown">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5.636 5.636a9 9 0 1 0 12.728 0M12 3v9" />
+                </svg>
+
+
+                <span>Shutdown</span>
+            </button>
+        </li>
+        <li>
+            <button class="flex items-center w-full space-x-3 py-2 px-4 text-sm hover:bg-red-100" data-name="reboot">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" />
+                </svg>
+
+                <span>Reboot</span>
+            </button>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/flowbite.min.css">
+
+    <title>vFAD-NG</title>
+</head>
+
+<body>
+
+<template id="table-row">
+    {% include 'components/tables/vlan-row.html' %}
+</template>
+
+<template id="toast">
+    {% include 'components/toast.html' %}
+</template>
+
+<!-- include modals -->
+{% include 'components/modals/delete.html' %}
+{% include 'components/modals/lldp.html' %}
+{% include 'components/modals/vlan.html' %}
+{% include 'components/modals/upload.html' %}
+{% include 'components/modals/about.html' %}
+
+
+<!-- toasts -->
+<div class="absolute z-50 top-0 w-full mt-3" id="toast-wrapper"></div>
+
+<!-- content -->
+<div class="lg:container relative mx-auto flex flex-col space-y-8 mt-8">
+
+    <!-- title + action buttons -->
+    <div class="flex justify-center items-center relative">
+        <span class="text-center text-3xl font-bold">vFAD-NG</span>
+
+        <div class="flex space-x-3 absolute right-0">
+            <!-- include dropdowns -->
+            {% include 'components/dropdowns/power.html' %}
+            {% include 'components/dropdowns/config.html' %}
+            {% include 'components/dropdowns/help.html' %}
+
+            <!-- show logging page -->
+            <a href="/" target="_blank" onclick="event.target.port=8080"
+               class="py-2 px-4 bg-blue-700 text-white text-sm font-bold rounded">
+                Logs
+            </a>
+        </div>
+    </div>
+
+    <!-- wrapper for LLDP tables -->
+    <div class="flex justify-between" data-name="lldp-tables">
+        {% set table, title = 'outbound', 'Local' %}
+        {% include 'components/tables/lldp-table.html' %}
+
+        {% set table, title = 'inbound', 'Remote' %}
+        {% include 'components/tables/lldp-table.html' %}
+    </div>
+
+    {% include 'components/tables/vlan-table.html' %}
+</div>
+
+<script src="/static/js/vendors/flowbite.min.js"></script>
+<script src="/static/js/vendors/socket.io.js"></script>
+
+<script src="/static/js/forms.js"></script>
+<script src="/static/js/modal.js"></script>
+<script src="/static/js/upload.js"></script>
+<script src="/static/js/lldp.js"></script>
+<script src="/static/js/vlan.js"></script>
+<script src="/static/js/toast.js"></script>
+<script src="/static/js/main.js"></script>
+
+
+</body>
+
+</html>

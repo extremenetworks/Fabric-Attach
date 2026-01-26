@@ -1,0 +1,88 @@
+<form id="vlan-update-form">
+    <template id="ping-add-input">
+        <div class="col-span-1 flex items-center space-x-1">
+            <button type="button" class="text-red-600">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-4">
+                    <path fill-rule="evenodd" d="M4 10a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H4.75A.75.75 0 0 1 4 10Z" clip-rule="evenodd"/>
+                </svg>
+            </button>
+
+            <label>
+                <input class="block w-full p-1.5 text-sm border border-gray-300 bg-gray-50" type="text" placeholder="x.x.x.x">
+            </label>
+        </div>
+    </template>
+
+
+    <div class="grid gap-4 mb-4 grid-cols-2">
+        <div class="col-span-1">
+            <label class="block mb-2 text-sm font-medium text-gray-900" for="vlanId">Vlan ID</label>
+            <input class="block w-full p-1.5 text-sm border border-gray-300 bg-gray-50" type="number" name="vlanId" id="vlanId" required="">
+        </div>
+
+        <div class="col-span-1">
+            <label class="block mb-2 text-sm font-medium text-gray-900" for="isid">I-SID</label>
+            <input class="block w-full p-1.5 text-sm border border-gray-300 bg-gray-50" type="number" name="isid" id="isid" required="">
+        </div>
+
+        <!-- Checkboxes for DHCP / IPerf /  -->
+        <div class="col-span-2 grid gap-4 grid-cols-3">
+            <div class="col-span-1">
+                <input class="p-1.5 text-sm border border-gray-300 bg-gray-50" type="checkbox" name="dhcp" id="dhcp">
+                <label class="mb-2 text-sm font-medium text-gray-900" for="dhcp">DHCP</label>
+            </div>
+
+            <div class="col-span-1">
+                <input class="p-1.5 text-sm border border-gray-300 bg-gray-50" type="checkbox" name="iperf" id="iperf">
+                <label class="mb-2 text-sm font-medium text-gray-900" for="iperf">IPerf</label>
+            </div>
+
+            <div class="col-span-1">
+                <input class="p-1.5 text-sm border border-gray-300 bg-gray-50" type="checkbox" name="web" id="web">
+                <label class="mb-2 text-sm font-medium text-gray-900" for="web">WEB</label>
+            </div>
+        </div>
+
+        <div class="col-span-1">
+            <label class="block mb-2 text-sm font-medium text-gray-900" for="ip">IP</label>
+            <input class="block w-full p-1.5 text-sm border border-gray-300 bg-gray-50" type="text" name="ip" id="ip" placeholder="IP-Address / mask">
+        </div>
+
+        <div class="col-span-1">
+            <label class="block mb-2 text-sm font-medium text-gray-900" for="dgw">Gateway</label>
+            <input class="block w-full p-1.5 text-sm border border-gray-300 bg-gray-50" type="text" name="dgw" id="dgw" placeholder="IP-Address">
+        </div>
+
+        <div class="col-span-2">
+            <label class="block mb-2 text-sm font-medium text-gray-900" for="ping">Ping Addresses</label>
+
+            <div class="grid gap-4 grid-cols-2" id="ping">
+                <!--                <div class="col-span-1 flex items-center space-x-1">-->
+                <!--                    <button type="button" class="text-gray-600">-->
+                <!--                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-4">-->
+                <!--                            <path fill-rule="evenodd" d="M4 10a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H4.75A.75.75 0 0 1 4 10Z" clip-rule="evenodd"/>-->
+                <!--                        </svg>-->
+                <!--                    </button>-->
+
+                <!--                    <label>-->
+                <!--                        <input class="block w-full p-1.5 text-sm border border-gray-300 bg-gray-50" type="text" placeholder="x.x.x.x">-->
+                <!--                    </label>-->
+                <!--                </div>-->
+            </div>
+
+            <div class="col-span-2">
+                <button class="text-sm text-blue-500" id="add-addr-btn">Add address</button>
+            </div>
+        </div>
+
+        <div class="col-span-1">
+            <label class="block mb-2 text-sm font-medium text-gray-900" for="mcast-client">Mcast Client</label>
+            <input class="block w-full p-1.5 text-sm border border-gray-300 bg-gray-50" type="text" name="mcast-client" id="mcast-client" placeholder="IP-Address : port">
+        </div>
+
+        <div class="col-span-1">
+            <label class="block mb-2 text-sm font-medium text-gray-900" for="mcast-server">Mcast Server</label>
+            <input class="block w-full p-1.5 text-sm border border-gray-300 bg-gray-50" type="text" name="mcast-server" id="mcast-server" placeholder="IP-Address : port">
+        </div>
+    </div>
+</form>

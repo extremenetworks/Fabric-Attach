@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .table-style {
+        border-spacing: 1rem 0;
+        border-collapse: unset;
+    }
+}

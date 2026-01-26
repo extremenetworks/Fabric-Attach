@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>vFAD-NG LOG</title>
+    <style>
+        body {
+            background-color: #02274a;
+        }
+
+        h1 {
+            color: #efaad9;
+            text-align: center;
+        }
+
+        h2 {
+            color: #efaad9;
+            text-align: center;
+        }
+
+        h3 {
+            color: #efaad9;
+            font-family: Consolas, monaco, monospace;
+        }
+
+        #buttons {
+            position: absolute;
+            right: 2rem;
+            top: 2rem;
+        }
+
+        button, a {
+            padding: 0.5rem 0.75rem;
+            border: 0;
+            background: #9af5c4;
+        }
+    </style>
+    <script src="/static/js/vendors/socket.io.js"></script>
+</head>
+<body>
+<h1>vFAD-NG</h1>
+<div id="buttons">
+    <a href="/download" style="margin-right: 2rem" download>Download Log Files</a>
+    <button data-action="debug" style="margin-right: 2rem">Log Level: Debug</button>
+    <button data-action="info" style="margin-right: 2rem">Log Level: Info</button>
+    <button data-action="clear">Clear Log</button>
+</div>
+<h2>LOG file browser</h2>
+<h3>Message: 
+    <span >all <span id="allMsgCountId"></span></span> / 
+    <span style="color:red">ERROR <span id="errorMsgCountId"></span></span> / 
+    <span style="color:yellow">WARNING <span id="warningMsgCountId"></span></span> /
+    <span style="color:#90EE90">INFO <span id="infoMsgCountId"></span></span> /
+    <span style="color:white">DEBUG <span id="debugMsgCountId"></span></span>
+</h3>
+<div id="logMsg"></div>
+
+<script>
+    const host = location.origin
+    // const host = '192.168.1.222'
+
+    const socket = io.connect(host);
+    let msgCount = 0;
+    let allMsgCount = 0;
+
+    socket.on('connect', function () {
+        socket.emit('request', {count: allMsgCount});
+    });
+    socket.on('response', function (msg) {
+        const data = JSON.parse(msg.data);
+        allMsgCount = data.counter.all;
+        // console.debug('got data:', data)
+        
+        let logMsg;
+        if (data.msg.includes("INFO")) {
+            logMsg = '<span style="color:#90EE90;font-family:Consolas,monaco,monospace">'+ data.msg +'</span>';
+        } else if (data.msg.includes("WARNING")) {
+            logMsg = '<span style="color:yellow;font-family:Consolas,monaco,monospace">'+ data.msg +'</span>';
+            } else if (data.msg.includes("ERROR")) {
+            logMsg = '<span style="color:red;font-family:Consolas,monaco,monospace">'+ data.msg +'</span>';
+        } else {
+            logMsg = '<span style="color:white;font-family:Consolas,monaco,monospace">'+ data.msg +'</span>';
+        }
+
+        if(msgCount + 1 < data.counter.max) {
+            document.getElementById('allMsgCountId').innerText = data.counter.all.toString();
+        }
+        else {
+            document.getElementById('allMsgCountId').innerText = data.counter.all.toString() + ' (display last '+ data.counter.max.toString() +')';
+        }
+        document.getElementById('errorMsgCountId').innerText = data.counter.error.toString();
+        document.getElementById('warningMsgCountId').innerText = data.counter.warning.toString();
+        document.getElementById('infoMsgCountId').innerText = data.counter.info.toString();
+        document.getElementById('debugMsgCountId').innerText = data.counter.debug.toString();
+        
+        const el = document.getElementById('logMsg'), elChild = document.createElement('div');
+        elChild.innerHTML = logMsg;
+        el.insertBefore(elChild, el.firstChild);
+        msgCount++;
+        // console.log("add line " + msgCount.toString());
+        
+        if(msgCount > data.counter.max) {
+            var paragraphs = document.getElementById("logMsg").getElementsByTagName('div');
+            var lastParagraph = paragraphs[paragraphs.length-1];
+            lastParagraph.parentNode.removeChild(lastParagraph);
+            msgCount--;
+            // console.log("del line " + msgCount.toString());
+        }
+    })
+        
+    const actionButtons = document.querySelectorAll('button[data-action]')
+    actionButtons.forEach(button => button.addEventListener('click', async _ => {
+        const response = await fetch('/control', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({action: button.getAttribute('data-action')})
+        })
+
+        if (!response.ok) {
+            console.error('cannot change log:', await response.json())
+        } else {
+            // reload page after 1s if log was cleared
+            if (button.getAttribute('data-action') === 'clear') {
+                setTimeout(_ => location.reload(), 1000);
+                msgCount = 0;
+            }
+        }
+    }))
+</script>
+</body>
+</html>

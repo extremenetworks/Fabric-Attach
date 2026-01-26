@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": [
+        "add",
+        "update",
+        "delete"
+      ]
+    },
+    "vlanId": {
+      "type": "integer",
+      "exclusiveMinimum": 0,
+      "exclusiveMaximum": 4096
+    },
+    "isid": {
+      "type": "integer",
+      "exclusiveMinimum": 0,
+      "exclusiveMaximum": 16000000
+    },
+    "dhcp": {
+      "type": "boolean",
+      "default": false
+    },
+    "ip": {
+      "type": "string",
+      "format": "ipv4"
+    },
+    "dgw": {
+      "type": "string",
+      "format": "ipv4"
+    },
+    "ping": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "ipv4"
+      },
+      "default": []
+    },
+    "mcast": {
+      "type": "object",
+      "properties": {
+        "server": {
+          "type": "string",
+          "format": "ipv4"
+        },
+        "client": {
+          "type": "string",
+          "format": "ipv4"
+        }
+      }
+    },
+    "iperf": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

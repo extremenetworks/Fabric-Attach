@@ -1,0 +1,82 @@
+<form id="lldp-update-form">
+    <div class="grid gap-4 mb-4 grid-cols-2">
+        <div class="col-span-2">
+            <label class="block mb-2 text-sm font-medium text-gray-900" for="name">
+                System Name
+            </label>
+
+            <input class="block w-full p-1.5 text-sm border border-gray-300 bg-gray-50" type="text" name="name" id="name" required="">
+        </div>
+
+        <div class="col-span-1">
+            <label class="block mb-2 text-sm font-medium text-gray-900" for="Type">
+                Type
+            </label>
+
+            <select id="Type" name="Type" class="block p-1.5 text-sm border border-gray-300 bg-gray-50 w-full">
+                <option value="Fabric Engine">Fabric Engine</option>
+                <option value="Switch Engine">Switch Engine</option>
+                <option value="ISW Switch">ISW Switch</option>
+                <option value="OVS">OVS</option>
+                <option value="AP">AP</option>
+                <option value="Phone">Phone</option>
+                <option value="Camera">Camera</option>
+            </select>
+        </div>
+
+        <div class="col-span-1">
+            <label class="block mb-2 text-sm font-medium text-gray-900" for="State">
+                State
+            </label>
+
+            <select id="State" name="State" class="block p-1.5 text-sm border border-gray-300 bg-gray-50 w-full">
+                <option value="tagged only">tagged only</option>
+                <option value="tagged & untagged">tagged & untagged</option>
+                <option value="untagged">untagged</option>
+            </select>
+        </div>
+
+        <div class="col-span-2">
+            <label class="block mb-2 text-sm font-medium text-gray-900" for="description">
+                Description
+            </label>
+
+            <input class="block p-1.5 text-sm border border-gray-300 bg-gray-50 w-full" type="text" name="description" id="description" required="">
+        </div>
+
+
+        <div class="col-span-2">
+            <input class="p-1.5 text-sm border border-gray-300 bg-gray-50" type="checkbox" name="auth" id="auth">
+
+            <label class="mb-2 text-sm font-medium text-gray-900" for="auth">Mesg. Auth</label>
+        </div>
+
+        <div class="col-span-2 hidden" data-name="key-input">
+            <label class="block mb-2 text-sm font-medium text-gray-900" for="key">
+                Key
+            </label>
+
+            <input class="block p-1.5 text-sm border border-gray-300 bg-gray-50 w-full" type="text" name="key" id="key" placeholder="use default key">
+        </div>
+
+        <div class="col-span-1">
+            <label class="block mb-2 text-sm font-medium text-gray-900" for="MgmtVlan">
+                Management VLAN
+            </label>
+
+            <input class="block p-1.5 text-sm border border-gray-300 bg-gray-50" type="number" step="1" name="MgmtVlan" id="MgmtVlan" required="">
+        </div>
+
+        <div class="col-span-1">
+            <label class="block mb-2 text-sm font-medium text-gray-900" for="ProvMode">
+                Provisioning Mode
+            </label>
+
+            <select id="ProvMode" name="ProvMode" class="block p-1.5 text-sm border border-gray-300 bg-gray-50 w-full">
+                <option value="disabled">disabled</option>
+                <option value="VLAN">VLAN</option>
+                <option value="SPB">SPB</option>
+            </select>
+        </div>
+    </div>
+</form>

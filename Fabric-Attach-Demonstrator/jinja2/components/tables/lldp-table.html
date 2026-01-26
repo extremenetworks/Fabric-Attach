@@ -1,0 +1,79 @@
+<!-- LLDP table -->
+<table class="table-style border text-sm" data-name="lldp-{{ table }}">
+    <thead>
+        <tr>
+            <th colspan="100%" class="text-center text-xl relative py-2" data-name="table-header">
+                {{ title }}
+
+                {% if title == 'Local' %}
+                <div class="absolute inset-y-0 right-0 flex items-center">
+                    <button class="text-sm text-blue-700" data-name="edit-lldp">
+                        Edit config
+                    </button>
+                </div>
+                {% endif %}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="text-right">System Name:</td>
+            <td class="font-mono" data-name="name"></td>
+        </tr>
+        <tr>
+            <td class="text-right">Description:</td>
+            <td class="font-mono" data-name="description"></td>
+        </tr>
+        <tr>
+            <td class="text-right">Capabilities:</td>
+            <td class="font-mono" data-name="capabilities"></td>
+        </tr>
+        <tr>
+            <td class="text-right">Interface:</td>
+            <td class="font-mono" data-name="port"></td>
+        </tr>
+        <tr>
+            <td class="text-right">Mgmt. IP:</td>
+            <td class="font-mono" data-name="ip"></td>
+        </tr>
+    </tbody>
+    <thead>
+        <tr>
+            <th class="text-left">FA-Element:</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="text-right">System-ID:</td>
+            <td class="font-mono" data-name="System-ID"></td>
+        </tr>
+        <tr>
+            <td class="text-right">Type:</td>
+            <td class="font-mono" data-name="Type"></td>
+        </tr>
+        <tr>
+            <td class="text-right">Mesg. Auth:</td>
+            <td class="font-mono">
+                <span data-name="msgAuth"></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="text-right">State:</td>
+            <td class="font-mono">
+                <span data-name="State"></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="text-right">Mgmt. VLAN:</td>
+            <td class="font-mono">
+                <span data-name="MgmtVlan"></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="text-right">Prov. Mode:</td>
+            <td class="font-mono">
+                <span data-name="ProvMode"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>
