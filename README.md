@@ -1,6 +1,6 @@
 # Fabric-Attach
 
-Automated Service Attachment for Enterprises is based on LLDP Auto Attach standart. More details you will find in the [Fabric Atach white paper](36049-Fabric-Attach-WP_v3b.pdf)
+Automated Service Attachment for Enterprises is based on the LLDP Auto Attach standard. More details you will find in the [Fabric Atach white paper](36049-Fabric-Attach-WP_v3b.pdf)
 
 Repository for Fabric Attach related information, documents, and tools
 
