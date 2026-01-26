@@ -26,7 +26,8 @@ http://\<your-ip-adress\>/
 </b><br><br>
 ![Alt text](vFAD-NG.png "vFAD-NG")
 <br>
-Please read the user gude for more details [vFAD-NG user guide](vFAD-NG_UserGuide.pdf)
+Please read the user guide for more details [vFAD-NG user guide](vFAD-NG_UserGuide.pdf)
+<br>
 
 ## License
 Copyright© 2025, Extreme Networks
